@@ -1,0 +1,18 @@
+bumblebee (NVIDIA Optimus support for Linux)
+
+Bumblebee daemon is a rewrite of the original Bumblebee service,
+providing an elegant and stable means of managing Optimus hybrid
+graphics chipsets. A primary goal of this project is not only to
+enable use of the discrete GPU for rendering, but also to enable
+smart power management of the dGPU when it's not in use.
+
+Bumblebee can work with either the nouveau or nvidia drivers,
+however the nvidia-driver package conflicts with some Mesa and
+X.org libraries (libGL.so and libglx.so). Also, the nvidia-kernel
+package installs an X.org conf file that prevent X from loading
+with the Intel GPU. If you want to use the nvidia driver, use
+the nvidia-driver-bumblebee and nvidia-kernel-bumblebee packages.
+
+Building requires libbsd and help2man
+
+Runtime requires VirtualGL and bbswitch (optional but recommended)

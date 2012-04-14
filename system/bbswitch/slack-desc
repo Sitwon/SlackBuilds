@@ -1,0 +1,19 @@
+# HOW TO EDIT THIS FILE:
+# The "handy ruler" below makes it easier to edit a package description.  Line
+# up the first '|' above the ':' following the base package name, and the '|'
+# on the right side marks the last column you can put a character in.  You must
+# make exactly 11 lines for the formatting to be correct.  It's also
+# customary to leave one space after the ':'.
+
+        |-----handy-ruler------------------------------------------------------|
+bbswitch: bbswitch (Disable discrete Optimus GPU)
+bbswitch:
+bbswitch: bbswitch is a kernel module which automatically detects the required
+bbswitch: ACPI calls for two kinds of Optimus laptps. It allows you to enale or
+bbswitch: disable the discrete GPU on these laptops (eg, to save power).
+bbswitch:
+bbswitch:
+bbswitch:
+bbswitch:
+bbswitch:
+bbswitch:

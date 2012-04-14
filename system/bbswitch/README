@@ -1,0 +1,20 @@
+bbswitch (Disable discrete Optimus GPU)
+
+bbswitch is a kernel module which automatically detects the required ACPI calls
+for two kinds of Optimus laptops. It has been verified to work with "real"
+Optimus and "legacy" Optimus laptops (at least, that is how I call them). The
+machines on which these tests has performed are:
+
+- Clevo B7130 - GT 425M ("real" Optimus, Lekensteyns laptop)
+- Dell Vostro 3500 - GT 310M ("legacy" Optimus, Samsagax' laptop)
+
+(note: there is no need to add more supported laptops here as the universal
+calls should work for every laptop model supporting either Optimus calls)
+
+It's preferred over manually hacking with the acpi_call module because it can
+detect the correct handle preceding _DSM and has some built-in safeguards:
+
+- You're not allowed to disable a card if a driver (nouveau, nvidia) is loaded.
+- Before suspend, the card is automatically enabled. When resuming, it's
+  disabled again if that was the case before suspending. Hibernation should
+  work, but it not tested.

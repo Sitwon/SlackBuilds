@@ -1,0 +1,13 @@
+VirtualGL (virualized 3D graphics hardware)
+
+VirtualGL is an open source package that gives any Unix or Linux
+remote display software the ability to run OpenGL applications with
+full 3D hardware acceleration.
+
+With VirtualGL, the OpenGL commands and 3D data are redirected to a
+3D graphics accelerator on the application server, and only the
+rendered 3D images are sent to the client machine. VirtualGL thus
+"virtualizes" 3D graphics hardware.
+
+This requires libjpeg-turbo
+

@@ -73,6 +73,9 @@ cd ..
 find $PKG -print0 | xargs -0 file | grep -e "executable" -e "shared object" | grep ELF \
   | cut -f 1 -d : | xargs strip --strip-unneeded 2> /dev/null || true
 
+# Don't clobber glxinfo
+mv $PKG/usr/bin/glxinfo $PKG/usr/bin/vglxinfo
+
 # Copy program documentation into the package
 # The included documentation varies from one application to another, so be sure
 # to adjust your script as needed

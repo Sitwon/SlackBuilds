@@ -1,0 +1,12 @@
+This is the proprietary binary video driver from NVidia for the X.Org
+X-server. This package does not include the kernel-module - it is a
+part of the nvidia-kernel-bumblebee package at SlackBuilds.org.
+
+Installing the 32-bit compatibility libraries is available, so pass
+
+COMPAT32="yes" ./nvidia-driver.SlackBuild
+
+This version is modified to work with bumblebee on systems that support
+NVIDIA Optimus.
+
+This also requires the nvidia-kernel and libvdpau package from SlackBuilds.org.

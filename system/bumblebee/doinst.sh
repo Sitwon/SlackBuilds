@@ -11,7 +11,19 @@ config() {
   # Otherwise, we leave the .new copy for the admin to consider...
 }
 
+preserve_perms() {
+  NEW="$1"
+  OLD="$(dirname $NEW)/$(basename $NEW .new)"
+  if [ -e $OLD ]; then
+    cp -a $OLD ${NEW}.incoming
+    cat $NEW > ${NEW}.incoming
+    mv ${NEW}.incoming $NEW
+  fi
+  config $NEW
+}
+
 config etc/bumblebee/bumblebee.conf.new
 config etc/bumblebee/xorg.conf.nvidia.new
 config etc/bumblebee/xorg.conf.nouveau.new
+preserve_perms etc/rc.d/rc.bumblebee.new
 

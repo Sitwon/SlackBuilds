@@ -1,0 +1,60 @@
+#!/bin/sh
+
+# /etc/rc.d/rc.bumblebee
+# Start/stop/restart the bumblebee daemon
+
+PIDFILE="/var/run/bumblebeed.pid"
+DAEMON="/usr/sbin/bumblebeed"
+
+# Define start and stop functions
+
+bumblebee_start() {
+  if [ -e $PIDFILE ]; then
+    echo "bumblebeed appears to already be running."
+    echo "If this is not the case, then remove "
+    echo "$PIDFILE and try again..."
+    exit 1
+  else
+    echo "Starting bumblebee daemon: $DAEMON &"
+    bumblebeed -D --use-syslog 2>/dev/null 1>&2 &
+  fi
+}
+
+bumblebee_force_stop() {
+  echo "Stopping bumblebee daemon..."
+  if [ -e $PIDFILE ]; then
+    kill -9 $(cat $PIDFILE) 2>/dev/null
+    rm -f $PIDFILE 2>/dev/null
+  else
+    pkill -9 bumblebee 2>/dev/null
+  fi
+}
+
+bumblebee_stop() {
+  echo "Stopping bumblebee daemon and closing connections..."
+  kill $(cat $PIDFILE) 2>/dev/null
+}
+
+
+# See how we were called and take appropriate action	
+
+case $1 in
+  start)
+    bumblebee_start
+   ;;
+  stop)
+    bumblebee_stop
+   ;;
+  force_stop)
+    bumblebee_force_stop
+   ;;
+  restart)
+    bumblebee_force_stop
+    bumblebee_start
+   ;;
+  *)
+    echo "Usage: $0 {start|stop|restart}"
+    exit 1
+   ;;
+esac
+

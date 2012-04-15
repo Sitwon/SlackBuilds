@@ -113,6 +113,13 @@ mv $PKG/etc/bumblebee/bumblebee.conf $PKG/etc/bumblebee/bumblebee.conf.new
 mv $PKG/etc/bumblebee/xorg.conf.nvidia $PKG/etc/bumblebee/xorg.conf.nvidia.new
 mv $PKG/etc/bumblebee/xorg.conf.nouveau $PKG/etc/bumblebee/xorg.conf.nouveau.new
 
+sed -i 's|^KernelDriver=$|\0nvidia|' $PKG/etc/bumblebee/bumblebee.conf.new
+sed -i 's|^LibraryPath=$|\0/usr/lib64/bumblebee:/usr/lib/bumblebee|' $PKG/etc/bumblebee/bumblebee.conf.new
+sed -i "s|^XorgModulePath=$|\0/usr/lib$LIBDIRSUFFIX/bumblebee/xorg/modules,/usr/lib$LIBDIRSUFFIX/xorg/modules|" $PKG/etc/bumblebee/bumblebee.conf.new
+
+mkdir -p $PKG/etc/rc.d
+cat $CWD/rc.bumblebee > $PKG/etc/rc.d/rc.bumblebee.new
+
 # Make the package; be sure to leave it in $OUTPUT
 # If package symlinks need to be created during install *before*
 # your custom contents of doinst.sh runs, then add the -p switch to

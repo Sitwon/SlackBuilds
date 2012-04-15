@@ -26,13 +26,16 @@ bumblebee_force_stop() {
     kill -9 $(cat $PIDFILE) 2>/dev/null
     rm -f $PIDFILE 2>/dev/null
   else
-    pkill -9 bumblebee 2>/dev/null
+    (ps ax | grep [b]umblebee | sed 's/^ \+//'| cut -d ' ' -f 1 | xargs kill -9) 2>/dev/null
   fi
+  rm -f /var/run/bumblebee.socket
 }
 
 bumblebee_stop() {
   echo "Stopping bumblebee daemon and closing connections..."
   kill $(cat $PIDFILE) 2>/dev/null
+  rm -f $PIDFILE 2>/dev/null
+  rm -f /var/run/bumblebee.socket
 }
 
 

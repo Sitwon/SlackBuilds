@@ -1,0 +1,11 @@
+diff --git common/CMakeLists.txt common/CMakeLists.txt
+index 51ce165..1774c7c 100644
+--- common/CMakeLists.txt
++++ common/CMakeLists.txt
+@@ -48,5 +48,5 @@ INCLUDE_DIRECTORIES(${PROTOBUF_INCLUDE_DIR})
+ INCLUDE_DIRECTORIES(${CMAKE_CURRENT_BINARY_DIR})
+ 
+ add_library(cockatrice_common ${common_SOURCES} ${common_HEADERS_MOC})
+-target_link_libraries(cockatrice_common cockatrice_protocol)
++target_link_libraries(cockatrice_common cockatrice_protocol pthread)
+ 

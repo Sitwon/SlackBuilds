@@ -1,0 +1,19 @@
+# HOW TO EDIT THIS FILE:
+# The "handy ruler" below makes it easier to edit a package description.  Line
+# up the first '|' above the ':' following the base package name, and the '|'
+# on the right side marks the last column you can put a character in.  You must
+# make exactly 11 lines for the formatting to be correct.  It's also
+# customary to leave one space after the ':' except on otherwise blank lines.
+
+          |-----handy-ruler------------------------------------------------------|
+Cockatrice: Cockatrice (online multi-player CCG engine)
+Cockatrice:
+Cockatrice: Cockatrice is an open-source multiplatform software for playing card
+Cockatrice: games, such as Magic: The Gathering, over a network. It is fully
+Cockatrice: client-server based to prevent any kind of cheating, though it
+Cockatrice: supports single-player games without a network interface as well.
+Cockatrice: Both client and server are written in Qt 4.
+Cockatrice:
+Cockatrice:
+Cockatrice: http://cockatrice.de/
+Cockatrice:

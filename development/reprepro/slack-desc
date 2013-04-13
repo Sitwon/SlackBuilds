@@ -1,0 +1,19 @@
+# HOW TO EDIT THIS FILE:
+# The "handy ruler" below makes it easier to edit a package description.  Line
+# up the first '|' above the ':' following the base package name, and the '|'
+# on the right side marks the last column you can put a character in.  You must
+# make exactly 11 lines for the formatting to be correct.  It's also
+# customary to leave one space after the ':' except on otherwise blank lines.
+
+        |-----handy-ruler------------------------------------------------------|
+reprepro: reprepro (a tool to handle local repositories of debian packages)
+reprepro:
+reprepro: reprepro is a tool to manage a repository of Debian packages (.deb,
+reprepro: .udeb, .dsc, ...). It stores files either being injected manually or
+reprepro: downloaded from some other repository (partially) mirrored into a
+reprepro: pool/ hierarchy. Managed packages and checksums of files are stored
+reprepro: in a Berkeley DB database file, so no database server is needed.
+reprepro: Checking signatures of mirrored repositories and creating signatures
+reprepro: of the generated Package indices is supported.
+reprepro:
+reprepro: Former working title of this program was mirrorer.

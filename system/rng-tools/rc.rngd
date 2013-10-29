@@ -1,0 +1,65 @@
+#!/bin/sh
+
+# /etc/rc.d/rc.rngd
+# Start/stop/restart the rngd daemon
+
+PIDFILE="/var/run/rngd.pid"
+DAEMON="/usr/sbin/rngd"
+
+# Define start and stop functions
+
+rngd_start() {
+  if [ -e $PIDFILE ]; then
+    echo "rngd appears to already be running."
+    echo "If this is not the case, then remove "
+    echo "$PIDFILE and try again..."
+    exit 1
+  else
+    echo "Starting rngd daemon: $DAEMON &"
+    rngd 2>/dev/null 1>&2 &
+  fi
+}
+
+rngd_force_stop() {
+  echo "Stopping rngd..."
+  if [ -e $PIDFILE ]; then
+    kill -9 $(cat $PIDFILE) 2>/dev/null
+    rm -f $PIDFILE 2>/dev/null
+  else
+    pkill -9 rngd 2>/dev/null
+  fi
+}
+
+rngd_stop() {
+  echo "Stopping rngd..."
+  if [ -e $PIDFILE ]; then
+    kill -9 $(cat $PIDFILE) 2>/dev/null
+    kill -0 $(cat $PIDFILE) 2>/dev/null || rm -f $PIDFILE 2>/dev/null
+  else
+    pkill -9 rngd 2>/dev/null
+  fi
+}
+
+
+# See how we were called and take appropriate action	
+
+case $1 in
+  start)
+    rngd_start
+   ;;
+  stop)
+    rngd_stop
+   ;;
+  force_stop)
+    rngd_force_stop
+   ;;
+  restart)
+    rngd_force_stop
+    rngd_start
+   ;;
+  *)
+    echo "Usage: $0 {start|stop|restart}"
+    exit 1
+   ;;
+esac
+
